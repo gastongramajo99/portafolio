@@ -19,7 +19,7 @@ const cv = document.querySelectorAll('.cv')
 
 cv.forEach(b => {
   b.addEventListener('click', () => {
-    window.open('/portafolio/assets/curriculum_vitae.pdf', '_blank')
+    window.open('https://gastongramajo99.github.io/portafolio/assets/curriculum_vitae.pdf', '_blank')
   })
 })
 
