@@ -1,37 +1,31 @@
 async function copiarTexto() {
-  try {
-    await navigator.clipboard.writeText('gastongramajo1999@gmail.com');
-    alert('¡Gmail copiado al portapapeles!');
-  } catch (err) {
-    alert('Error al copiar texto: ', err);
-  }
+	try {
+		await navigator.clipboard.writeText('gastongramajo1999@gmail.com');
+		mostrarMensaje('¡Email copiado!');
+	} catch (err) {
+		console.error(err);
+		mostrarMensaje('No se pudo copiar');
+	}
 }
 
-const github = document.querySelectorAll('.github')
-github.forEach(b => {
-    b.addEventListener('click', () => {
-        window.open('https://github.com/gastongramajo99', '_blank')
-    })
-})
+function mostrarMensaje(msg) {
+  const aviso = document.createElement('div');
+  aviso.textContent = msg;
+  aviso.style.position = 'fixed';
+  aviso.style.bottom = '20px';
+  aviso.style.left = '50%';
+  aviso.style.transform = 'translateX(-50%)';
+  aviso.style.background = '#000';
+  aviso.style.color = '#fff';
+  aviso.style.padding = '10px 20px';
+  aviso.style.borderRadius = '8px';
 
-const cv = document.querySelectorAll('.cv')
-cv.forEach(b => {
-  b.addEventListener('click', () => {
-    window.open('https://gastongramajo99.github.io/portafolio/assets/curriculum_vitae.pdf', '_blank')
-  })
-})
+  document.body.appendChild(aviso);
 
-const imgBoletin = document.querySelector('.img-boletin')
-imgBoletin.addEventListener('click', () => {
-  window.open('https://boletin-oficial-6a5h.onrender.com', '_blank')
-})
+  setTimeout(() => {
+    aviso.remove();
+  }, 2000);
+}
 
-const gitBoletin = document.querySelector('.gitBoletin')
-gitBoletin.addEventListener('click', () => {
-    window.open('https://github.com/gastongramajo99/boletin-oficial', '_blank')
-})
-
-const boletin = document.querySelector('.boletin')
-boletin.addEventListener('click', () => {
-    window.open('https://boletin-oficial-6a5h.onrender.com', '_blank')
-})
+document.querySelector('.btn-mail')
+	.addEventListener('click', copiarTexto);
